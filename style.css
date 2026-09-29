@@ -1,0 +1,161 @@
+body {
+  box-sizing: border-box;
+  margin: 0;
+  scroll-behavior: smooth;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-logo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5rem;
+  font-family: sans-serif;
+}
+
+.header-logo img {
+  position: absolute;
+  z-index: 1;
+  opacity: 0.05;
+  margin-top: -6rem;
+}
+
+h1 {
+  font-size: 6rem;
+  position: relative;
+  z-index: 2;
+}
+
+main {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(74, 74, 74);
+  border-radius: 2rem;
+  padding: 2rem;
+  margin: 0.5rem;
+  width: 12rem;
+  height: 12rem;
+  cursor: pointer;
+  color: white;
+  font-family: sans-serif;
+}
+
+.grass {
+  background-color: rgb(36, 187, 86);
+}
+
+.fire {
+  background-color: rgb(183, 20, 61);
+}
+
+.psychic {
+  background-color: rgb(234, 82, 145);
+}
+
+.water {
+  background-color: rgb(36, 81, 243);
+}
+
+.bug {
+  background-color: rgb(161, 198, 69);
+}
+
+.normal {
+  background-color: rgb(138, 153, 99);
+}
+
+.poison {
+  background-color: rgb(137, 37, 150);
+}
+
+.electric {
+  background-color: rgb(255, 221, 0);
+}
+
+.ground {
+  background-color: rgb(170, 162, 109);
+}
+
+.fairy {
+  background-color: rgb(255, 188, 219);
+}
+
+.fighting {
+  background-color: rgb(164, 0, 0);
+}
+
+.ghost {
+  background-color: rgb(98, 69, 113);
+}
+
+.ice {
+  background-color: rgb(91, 255, 247);
+}
+
+.dragon {
+  background-color: rgb(118, 21, 255);
+}
+
+.dark {
+  background-color: rgb(53, 45, 46);
+}
+
+.steel {
+  background-color: rgb(197, 185, 220);
+}
+
+.card-bottom-section {
+  position: relative;
+  z-index: 0;
+  display: flex;
+  width: 12rem;
+  height: 12rem;
+}
+
+.card-bottom-section > img {
+  position: relative;
+  z-index: 1;
+  bottom: -1rem;
+  right: -0.5rem;
+  max-width: 12rem;
+  max-height: 12rem;
+  object-fit: cover;
+}
+
+.poke-number {
+  display: flex;
+  justify-content: end;
+  filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.3));
+}
+
+.card h3 {
+  display: flex;
+  justify-content: start;
+  font-size: 2rem;
+  margin-block: 0.5rem;
+  filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.3));
+}
+
+.poke-type {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.3);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  margin-block: 0.5rem;
+  text-align: center;
+  filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.3));
+}

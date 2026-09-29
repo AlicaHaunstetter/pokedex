@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pokedex</title>
+    <link rel="icon" type="image/x-icon" href="./assets/icons/favicon.png" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <section class="header-logo">
+        <h1>Pokedex</h1>
+        <img src="./assets/img/pokeball.jpg" alt="Pokeball" />
+      </section>
+      <section class="search">
+        <input type="text" id="search-input" />
+        <button>search</button>
+      </section>
+    </header>
+
+    <main id="content">
+      <section role="button" id="card-${i}" class="card grass">
+        <div id="poke-number" class="poke-number">#1</div>
+        <h3>Bulbasaur</h3>
+        <div class="card-bottom-section">
+          <div class="type-wrapper">
+            <div id="poke-type" class="poke-type">Grass</div>
+            <div id="poke-type" class="poke-type">Poison</div>
+          </div>
+          <img
+            id="card-image"
+            src="./assets/img/Bulbasaur-PNG-Picture.png"
+            alt=""
+          />
+        </div>
+      </section>
+
+      <section role="button" id="card-${i}" class="card fire">
+        <div id="poke-number" class="poke-number">#1</div>
+        <h3>Charmander</h3>
+        <div class="card-bottom-section">
+          <div class="type-wrapper">
+            <div id="poke-type" class="poke-type">Fire</div>
+          </div>
+          <img
+            id="card-image"
+            src="./assets/img/117720-charmander-free-download-png-hd.png"
+            alt=""
+          />
+        </div>
+      </section>
+
+      <section role="button" id="card-${i}" class="card water">
+        <div id="poke-number" class="poke-number">#1</div>
+        <h3>Poliwag</h3>
+        <div class="card-bottom-section">
+          <div class="type-wrapper">
+            <div id="poke-type" class="poke-type">Water</div>
+          </div>
+          <img
+            id="card-image"
+            src="./assets/img/117720-charmander-free-download-png-hd.png"
+            alt=""
+          />
+        </div>
+      </section>
+
+      <section role="button" id="card-${i}" class="card ice">
+        <div id="poke-number" class="poke-number">#1</div>
+        <h3>Kadabra</h3>
+        <div class="card-bottom-section">
+          <div class="type-wrapper">
+            <div id="poke-type" class="poke-type">Psychic</div>
+          </div>
+          <img
+            id="card-image"
+            src="./assets/img/117720-charmander-free-download-png-hd.png"
+            alt=""
+          />
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
