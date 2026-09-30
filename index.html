@@ -20,63 +20,296 @@
     </header>
 
     <main id="content">
-      <section role="button" id="card-${i}" class="card grass">
-        <div id="poke-number" class="poke-number">#1</div>
-        <h3>Bulbasaur</h3>
+      <dialog id="overlay" class="overlay">
+        <section class="card-overlay grass">
+          <div class="name-type-wrapper">
+            <h3>Bulbasaur</h3>
+            <div class="type-wrapper">
+              <div id="poke-type" class="poke-type">Grass</div>
+              <div id="poke-type" class="poke-type">Poison</div>
+            </div>
+          </div>
+          <div id="poke-number" class="poke-number">#1</div>
+          <div class="overlay-img">
+            <img
+              id="card-image"
+              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg"
+              alt="sprites.other.dream_world.front_default"
+            />
+          </div>
+        </section>
+      </dialog>
+
+      <section role="button" class="card bug">
+        <div class="poke-number">#10</div>
+        <h3>Caterpie</h3>
         <div class="card-bottom-section">
           <div class="type-wrapper">
-            <div id="poke-type" class="poke-type">Grass</div>
-            <div id="poke-type" class="poke-type">Poison</div>
+            <div class="poke-type">Bug</div>
           </div>
           <img
-            id="card-image"
-            src="./assets/img/Bulbasaur-PNG-Picture.png"
-            alt=""
+            class="card-image"
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/10.svg"
+            alt="Caterpie"
           />
         </div>
       </section>
 
-      <section role="button" id="card-${i}" class="card fire">
-        <div id="poke-number" class="poke-number">#1</div>
+      <section role="button" class="card dark">
+        <div class="poke-number">#197</div>
+        <h3>Umbreon</h3>
+        <div class="card-bottom-section">
+          <div class="type-wrapper">
+            <div class="poke-type">Dark</div>
+          </div>
+          <img
+            class="card-image"
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/197.svg"
+            alt="Umbreon"
+          />
+        </div>
+      </section>
+
+      <section role="button" class="card dragon">
+        <div class="poke-number">#147</div>
+        <h3>Dratini</h3>
+        <div class="card-bottom-section">
+          <div class="type-wrapper">
+            <div class="poke-type">Dragon</div>
+          </div>
+          <img
+            class="card-image"
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/147.svg"
+            alt="Dratini"
+          />
+        </div>
+      </section>
+
+      <section role="button" class="card electric">
+        <div class="poke-number">#25</div>
+        <h3>Pikachu</h3>
+        <div class="card-bottom-section">
+          <div class="type-wrapper">
+            <div class="poke-type">Electric</div>
+          </div>
+          <img
+            class="card-image"
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/25.svg"
+            alt="Pikachu"
+          />
+        </div>
+      </section>
+
+      <section role="button" class="card fairy">
+        <div class="poke-number">#35</div>
+        <h3>Clefairy</h3>
+        <div class="card-bottom-section">
+          <div class="type-wrapper">
+            <div class="poke-type">Fairy</div>
+          </div>
+          <img
+            class="card-image"
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/35.svg"
+            alt="Clefairy"
+          />
+        </div>
+      </section>
+
+      <section role="button" class="card fighting">
+        <div class="poke-number">#66</div>
+        <h3>Machop</h3>
+        <div class="card-bottom-section">
+          <div class="type-wrapper">
+            <div class="poke-type">Fighting</div>
+          </div>
+          <img
+            class="card-image"
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/66.svg"
+            alt="Machop"
+          />
+        </div>
+      </section>
+
+      <section role="button" class="card fire">
+        <div class="poke-number">#4</div>
         <h3>Charmander</h3>
         <div class="card-bottom-section">
           <div class="type-wrapper">
-            <div id="poke-type" class="poke-type">Fire</div>
+            <div class="poke-type">Fire</div>
           </div>
           <img
-            id="card-image"
-            src="./assets/img/117720-charmander-free-download-png-hd.png"
-            alt=""
+            class="card-image"
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/4.svg"
+            alt="Charmander"
           />
         </div>
       </section>
 
-      <section role="button" id="card-${i}" class="card water">
-        <div id="poke-number" class="poke-number">#1</div>
-        <h3>Poliwag</h3>
+      <section role="button" class="card flying">
+        <div class="poke-number">#641</div>
+        <h3>Tornadus</h3>
         <div class="card-bottom-section">
           <div class="type-wrapper">
-            <div id="poke-type" class="poke-type">Water</div>
+            <div class="poke-type">Flying</div>
           </div>
           <img
-            id="card-image"
-            src="./assets/img/117720-charmander-free-download-png-hd.png"
-            alt=""
+            class="card-image"
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/641.svg"
+            alt="Tornadus"
           />
         </div>
       </section>
 
-      <section role="button" id="card-${i}" class="card ice">
-        <div id="poke-number" class="poke-number">#1</div>
-        <h3>Kadabra</h3>
+      <section role="button" class="card ghost">
+        <div class="poke-number">#92</div>
+        <h3>Gastly</h3>
         <div class="card-bottom-section">
           <div class="type-wrapper">
-            <div id="poke-type" class="poke-type">Psychic</div>
+            <div class="poke-type">Ghost</div>
+            <div class="poke-type">Poison</div>
           </div>
           <img
-            id="card-image"
-            src="./assets/img/117720-charmander-free-download-png-hd.png"
-            alt=""
+            class="card-image"
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/92.svg"
+            alt="Gastly"
+          />
+        </div>
+      </section>
+
+      <section role="button" class="card grass">
+        <div class="poke-number">#1</div>
+        <h3>Bulbasaur</h3>
+        <div class="card-bottom-section">
+          <div class="type-wrapper">
+            <div class="poke-type">Grass</div>
+            <div class="poke-type">Poison</div>
+          </div>
+          <img
+            class="card-image"
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg"
+            alt="Bulbasaur"
+          />
+        </div>
+      </section>
+
+      <section role="button" class="card ground">
+        <div class="poke-number">#50</div>
+        <h3>Diglett</h3>
+        <div class="card-bottom-section">
+          <div class="type-wrapper">
+            <div class="poke-type">Ground</div>
+          </div>
+          <img
+            class="card-image"
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/50.svg"
+            alt="Diglett"
+          />
+        </div>
+      </section>
+
+      <section role="button" class="card ice">
+        <div class="poke-number">#361</div>
+        <h3>Snorunt</h3>
+        <div class="card-bottom-section">
+          <div class="type-wrapper">
+            <div class="poke-type">Ice</div>
+          </div>
+          <img
+            class="card-image"
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/361.svg"
+            alt="Snorunt"
+          />
+        </div>
+      </section>
+
+      <section role="button" class="card normal">
+        <div class="poke-number">#133</div>
+        <h3>Eevee</h3>
+        <div class="card-bottom-section">
+          <div class="type-wrapper">
+            <div class="poke-type">Normal</div>
+          </div>
+          <img
+            class="card-image"
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/133.svg"
+            alt="Eevee"
+          />
+        </div>
+      </section>
+
+      <section role="button" class="card poison">
+        <div class="poke-number">#23</div>
+        <h3>Ekans</h3>
+        <div class="card-bottom-section">
+          <div class="type-wrapper">
+            <div class="poke-type">Poison</div>
+          </div>
+          <img
+            class="card-image"
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/23.svg"
+            alt="Ekans"
+          />
+        </div>
+      </section>
+
+      <section role="button" class="card psychic">
+        <div class="poke-number">#63</div>
+        <h3>Abra</h3>
+        <div class="card-bottom-section">
+          <div class="type-wrapper">
+            <div class="poke-type">Psychic</div>
+          </div>
+          <img
+            class="card-image"
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/63.svg"
+            alt="Abra"
+          />
+        </div>
+      </section>
+
+      <section role="button" class="card rock">
+        <div class="poke-number">#74</div>
+        <h3>Geodude</h3>
+        <div class="card-bottom-section">
+          <div class="type-wrapper">
+            <div class="poke-type">Rock</div>
+            <div class="poke-type">Ground</div>
+          </div>
+          <img
+            class="card-image"
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/74.svg"
+            alt="Geodude"
+          />
+        </div>
+      </section>
+
+      <section role="button" class="card steel">
+        <div class="poke-number">#374</div>
+        <h3>Beldum</h3>
+        <div class="card-bottom-section">
+          <div class="type-wrapper">
+            <div class="poke-type">Steel</div>
+            <div class="poke-type">Psychic</div>
+          </div>
+          <img
+            class="card-image"
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/374.svg"
+            alt="Beldum"
+          />
+        </div>
+      </section>
+
+      <section role="button" class="card water">
+        <div class="poke-number">#7</div>
+        <h3>Squirtle</h3>
+        <div class="card-bottom-section">
+          <div class="type-wrapper">
+            <div class="poke-type">Water</div>
+          </div>
+          <img
+            class="card-image"
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/7.svg"
+            alt="Squirtle"
           />
         </div>
       </section>
