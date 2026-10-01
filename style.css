@@ -22,10 +22,9 @@ header {
 }
 
 .header-logo img {
-  position: absolute;
-  z-index: 1;
-  opacity: 0.05;
-  margin-top: -6rem;
+  opacity: 1;
+  width: 16rem;
+  margin-bottom: 2rem;
 }
 
 h1 {
@@ -179,9 +178,6 @@ main {
 }
 
 dialog.overlay {
-  z-index: 1;
-  display: block !important; /*nach JS löschen*/
-
   padding: 0;
   border: none;
   background: transparent;
@@ -325,4 +321,54 @@ dialog.overlay::backdrop {
 
 .detail-table td {
   color: rgb(30, 30, 60);
+}
+
+.detail-arrows {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.nav-button {
+  display: grid;
+  place-items: center;
+  padding: 0.25rem;
+  border: none;
+  background: none;
+  color: white;
+  cursor: pointer;
+}
+
+.nav-button:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+  border-radius: 0.5rem;
+}
+
+.nav-button:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.load-more-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 0;
+  font-family: sans-serif;
+  color: rgb(0, 0, 54);
+}
+
+#load-more-button {
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 1rem;
+  background-color: rgb(0, 0, 54);
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+#load-more-button:disabled {
+  opacity: 0.5;
+  cursor: default;
 }
