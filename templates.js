@@ -1,19 +1,34 @@
+function listTemplate(pokemonList) {
+  let html = "";
+  for (let i = 0; i < pokemonList.length; i++) {
+    html += cardTemplate(pokemonList[i], i);
+  }
+  return `<ul class="card-list" aria-label="Pokemon list">${html}</ul>`;
+}
+
+function notFoundTemplate() {
+  return `<p class="not-found" data-id="not-found">No match found.</p>`;
+}
+
 function cardTemplate(pokemon, index) {
   return `
-    <section role="button" class="card ${pokemon.types[0]}" id="card-${index}" onclick="openDialog(${index})">
-      <div class="poke-number">#${pokemon.id}</div>
-      <h3>${capitalize(pokemon.name)}</h3>
-      <div class="card-bottom-section">
-        <div class="type-wrapper">${typesTemplate(pokemon.types)}</div>
-        <img class="card-image" id="card-image-${index}" src="${pokemon.image}" alt="${pokemon.name}" />
-      </div>
-    </section>`;
+    <li>
+      <button class="card ${pokemon.types[0]}" id="card-${index}" data-id="card"
+        aria-label="Show details of ${capitalize(pokemon.name)}" onclick="openDialog(${index})">
+        <span class="poke-number">#${pokemon.id}</span>
+        <span class="card-name">${capitalize(pokemon.name)}</span>
+        <span class="card-bottom-section">
+          <span class="type-wrapper">${typesTemplate(pokemon.types)}</span>
+          <img class="card-image" id="card-image-${index}" data-id="card-image" src="${pokemon.image}" alt="${pokemon.name}" />
+        </span>
+      </button>
+    </li>`;
 }
 
 function typesTemplate(types) {
   let html = "";
   for (let i = 0; i < types.length; i++) {
-    html += `<div class="poke-type">${capitalize(types[i])}</div>`;
+    html += `<span class="poke-type">${capitalize(types[i])}</span>`;
   }
   return html;
 }
@@ -21,17 +36,17 @@ function typesTemplate(types) {
 function iconTemplate(path) {
   return `
     <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor"
-      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
       <path d="${path}" />
     </svg>`;
 }
 
 function dialogTemplate(pokemon, index) {
   return `
-    <article class="detail ${pokemon.types[0]}" id="overlay-pokemon-name">
+    <div class="detail ${pokemon.types[0]}" id="overlay-pokemon-name" data-id="overlay-pokemon-name">
       ${topTemplate(pokemon, index)}
       ${tableTemplate(pokemon)}
-    </article>`;
+    </div>`;
 }
 
 function topTemplate(pokemon, index) {
@@ -43,14 +58,15 @@ function topTemplate(pokemon, index) {
         <span class="detail-number">#${formatNumber(pokemon.id)}</span>
       </div>
       <div class="type-wrapper detail-types">${typesTemplate(pokemon.types)}</div>
-      <img class="detail-image" id="dialog-image" src="${pokemon.image}" alt="${pokemon.name}" />
+      <img class="detail-image" id="dialog-image" data-id="dialog-image" src="${pokemon.image}" alt="${pokemon.name}" />
     </div>`;
 }
 
 function navTemplate(index) {
   return `
     <div class="detail-nav">
-      <button class="close-button" id="close-dialog-button" onclick="closeDialog()" aria-label="close">
+      <button class="close-button" id="close-dialog-button" data-id="close-dialog-button"
+        onclick="closeDialog()" aria-label="Close details">
         ${iconTemplate("M19 12H5M11 6l-6 6 6 6")}
       </button>
       ${arrowsTemplate(index)}
@@ -62,19 +78,32 @@ function arrowsTemplate(index) {
   const nextOff = index === visiblePokemon.length - 1 ? "disabled" : "";
   return `
     <div class="detail-arrows">
-      <button class="nav-button" id="prev-button" onclick="showPrevious()" aria-label="previous" ${prevOff}>
-        ${iconTemplate("M15 6l-6 6 6 6")}
-      </button>
-      <button class="nav-button" id="next-button" onclick="showNext()" aria-label="next" ${nextOff}>
-        ${iconTemplate("M9 6l6 6-6 6")}
-      </button>
+      ${prevButtonTemplate(prevOff)}
+      ${nextButtonTemplate(nextOff)}
     </div>`;
+}
+
+function prevButtonTemplate(disabled) {
+  return `
+    <button class="nav-button" id="prev-button" data-id="prev-button"
+      onclick="showPrevious()" aria-label="Previous Pokemon" ${disabled}>
+      ${iconTemplate("M15 6l-6 6 6 6")}
+    </button>`;
+}
+
+function nextButtonTemplate(disabled) {
+  return `
+    <button class="nav-button" id="next-button" data-id="next-button"
+      onclick="showNext()" aria-label="Next Pokemon" ${disabled}>
+      ${iconTemplate("M9 6l6 6-6 6")}
+    </button>`;
 }
 
 function tableTemplate(pokemon) {
   return `
     <div class="detail-panel">
       <table class="detail-table">
+        ${statRowsTemplate(pokemon.stats)}
         ${rowTemplate("Base Experience", pokemon.baseExp)}
         ${rowTemplate("Main Move", pokemon.mainMove)}
         ${rowTemplate("Height", pokemon.height)}
@@ -82,6 +111,14 @@ function tableTemplate(pokemon) {
         ${rowTemplate("Abilities", pokemon.abilities)}
       </table>
     </div>`;
+}
+
+function statRowsTemplate(stats) {
+  let html = "";
+  for (let i = 0; i < stats.length; i++) {
+    html += rowTemplate(stats[i].name, stats[i].value);
+  }
+  return html;
 }
 
 function rowTemplate(label, value) {

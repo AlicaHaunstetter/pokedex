@@ -19,17 +19,47 @@
         <img src="./assets/img/pokedex.png" alt="Pokedex Logo Font" />
       </section>
       <section class="search">
-        <input type="text" id="search-input" />
+        <input
+          type="text"
+          id="search-input"
+          data-id="search-input"
+          aria-label="Search Pokemon by name"
+          placeholder="At least 3 letters"
+          oninput="checkInput()"
+        />
+        <button
+          id="search-button"
+          data-id="search-button"
+          aria-label="Search Pokemon"
+          onclick="startSearch()"
+          disabled
+        >
+          Search
+        </button>
       </section>
     </header>
 
-    <dialog id="dialog" class="overlay"></dialog>
+    <dialog
+      id="dialog"
+      data-id="dialog"
+      class="overlay"
+      aria-label="Pokemon details"
+      onclick="closeOnBackdrop(event)"
+      onclose="unlockScroll()"
+    ></dialog>
 
-    <main id="content"></main>
+    <main id="content" data-id="content"></main>
 
     <section class="load-more-section">
       <p id="loading" hidden>Loading...</p>
-      <button id="load-more-button" onclick="loadPokemon()">Load More</button>
+      <button
+        id="load-more-button"
+        data-id="load-more-button"
+        aria-label="Load more Pokemon"
+        onclick="loadPokemon()"
+      >
+        Load More
+      </button>
     </section>
   </body>
 </html>

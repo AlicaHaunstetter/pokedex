@@ -27,20 +27,59 @@ header {
   margin-bottom: 2rem;
 }
 
-h1 {
-  font-size: 4rem;
-  position: relative;
-  z-index: 2;
-  color: rgb(0, 0, 54);
+.search {
+  display: flex;
+  gap: 0.5rem;
+  width: 90%;
+  max-width: 24rem;
+  font-family: sans-serif;
+}
+
+#search-input {
+  flex: 1;
+  min-width: 0;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 1rem;
+  font-size: 1rem;
+}
+
+#search-button {
+  padding: 0.75rem 1.25rem;
+  border: none;
+  border-radius: 1rem;
+  background-color: rgb(0, 0, 54);
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+#search-button:disabled {
+  opacity: 0.5;
+  cursor: default;
 }
 
 main {
-  margin-top: 2rem;
+  box-sizing: border-box;
+  max-width: 1440px;
+  margin: 2rem auto 0;
+  padding: 0.2rem;
+}
+
+.card-list {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 0.2rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.not-found {
+  text-align: center;
+  font-family: sans-serif;
+  color: rgb(0, 0, 54);
 }
 
 .card {
@@ -59,8 +98,16 @@ main {
   cursor: pointer;
   color: white;
   font-family: sans-serif;
+  font-size: 1rem;
+  text-align: left;
+  border: none;
+  transition: transform 0.2s;
 
   box-sizing: border-box;
+}
+
+.card:hover {
+  transform: translateY(-0.25rem);
 }
 
 .card::before {
@@ -76,13 +123,11 @@ main {
   background-position: right -1.5rem bottom -1.5rem;
 }
 
-.card h3 {
-  display: flex;
-  justify-content: start;
+.card-name {
+  display: block;
   font-size: 1.1rem;
+  font-weight: bold;
   margin-bottom: 0.25rem;
-  margin-block-start: 0rem;
-  margin-block-end: 0.25rem;
   filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.3));
 }
 
@@ -112,6 +157,7 @@ main {
 }
 
 .poke-type {
+  display: block;
   color: white;
   font-size: 0.75rem;
   background-color: rgba(255, 255, 255, 0.3);
@@ -191,6 +237,20 @@ dialog.overlay::backdrop {
   backdrop-filter: blur(3px);
 }
 
+@media (max-width: 480px) {
+  dialog.overlay {
+    width: 100%;
+    max-width: 100%;
+    height: 100dvh;
+    max-height: 100dvh;
+  }
+
+  dialog.overlay .detail {
+    height: 100%;
+    border-radius: 0;
+  }
+}
+
 .detail {
   position: relative;
   isolation: isolate;
@@ -253,6 +313,7 @@ dialog.overlay::backdrop {
 
 .detail-name {
   margin: 0;
+  overflow-wrap: anywhere;
   font-size: 2rem;
   filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.3));
 }
@@ -371,4 +432,8 @@ dialog.overlay::backdrop {
 #load-more-button:disabled {
   opacity: 0.5;
   cursor: default;
+}
+
+body.no-scroll {
+  overflow: hidden;
 }

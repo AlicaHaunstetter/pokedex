@@ -4,6 +4,7 @@ let allPokemon = [];
 let visiblePokemon = [];
 let nextUrl = START_URL;
 let currentIndex = 0;
+let searchTerm = "";
 
 async function init() {
   await loadPokemon();
@@ -20,7 +21,7 @@ async function loadPokemon() {
     console.error("Loading failed:", error);
   }
   setLoading(false);
-  visiblePokemon = allPokemon;
+  visiblePokemon = filterPokemon();
   renderCards();
 }
 
@@ -50,6 +51,7 @@ function createPokemon(data) {
     abilities: getAbilities(data),
     baseExp: data.base_experience || "-",
     mainMove: getMainMove(data),
+    stats: getStats(data),
   };
 }
 
@@ -67,6 +69,17 @@ function getAbilities(data) {
     names.push(cleanName(data.abilities[i].ability.name));
   }
   return names.join(", ");
+}
+
+function getStats(data) {
+  const stats = [];
+  for (let i = 0; i < data.stats.length; i++) {
+    stats.push({
+      name: formatStatName(data.stats[i].stat.name),
+      value: data.stats[i].base_stat,
+    });
+  }
+  return stats;
 }
 
 function getMainMove(data) {
@@ -96,6 +109,11 @@ function formatWeight(hectograms) {
   return `${lbs} lbs (${kg.toFixed(1)} kg)`;
 }
 
+function formatStatName(name) {
+  if (name === "hp") return "HP";
+  return cleanName(name);
+}
+
 function capitalize(text) {
   return text.charAt(0).toUpperCase() + text.slice(1);
 }
@@ -115,17 +133,47 @@ function setLoading(isLoading) {
   button.hidden = !nextUrl;
 }
 
+function getInputValue() {
+  return document.getElementById("search-input").value.trim().toLowerCase();
+}
+
+function checkInput() {
+  const value = getInputValue();
+  document.getElementById("search-button").disabled = value.length < 3;
+  if (value.length === 0 && searchTerm !== "") resetSearch();
+}
+
+function filterPokemon() {
+  return allPokemon.filter((pokemon) =>
+    pokemon.name.toLowerCase().includes(searchTerm)
+  );
+}
+
+function startSearch() {
+  searchTerm = getInputValue();
+  visiblePokemon = filterPokemon();
+  renderCards();
+}
+
+function resetSearch() {
+  searchTerm = "";
+  visiblePokemon = allPokemon;
+  renderCards();
+}
+
 function renderCards() {
-  let html = "";
-  for (let i = 0; i < visiblePokemon.length; i++) {
-    html += cardTemplate(visiblePokemon[i], i);
+  const content = document.getElementById("content");
+  if (visiblePokemon.length === 0 && searchTerm !== "") {
+    content.innerHTML = notFoundTemplate();
+    return;
   }
-  document.getElementById("content").innerHTML = html;
+  content.innerHTML = listTemplate(visiblePokemon);
 }
 
 function openDialog(index) {
   currentIndex = index;
   renderDialog();
+  document.body.classList.add("no-scroll");
   document.getElementById("dialog").showModal();
 }
 
@@ -136,6 +184,14 @@ function renderDialog() {
 
 function closeDialog() {
   document.getElementById("dialog").close();
+}
+
+function unlockScroll() {
+  document.body.classList.remove("no-scroll");
+}
+
+function closeOnBackdrop(event) {
+  if (event.target === event.currentTarget) closeDialog();
 }
 
 function showPrevious() {
