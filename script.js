@@ -6,8 +6,6 @@ let nextUrl = START_URL;
 let currentIndex = 0;
 let searchTerm = "";
 
-init();
-
 async function init() {
   await loadPokemon();
 }
@@ -189,7 +187,11 @@ function renderDialog() {
   const dialog = document.getElementById("dialog");
   const prevOff = currentIndex === 0 ? "disabled" : "";
   const nextOff = currentIndex === visiblePokemon.length - 1 ? "disabled" : "";
-  dialog.innerHTML = dialogTemplate(visiblePokemon[currentIndex], prevOff, nextOff);
+  dialog.innerHTML = dialogTemplate(
+    visiblePokemon[currentIndex],
+    prevOff,
+    nextOff,
+  );
 }
 
 function getTypesHtml(types) {
