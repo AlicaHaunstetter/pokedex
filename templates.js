@@ -1,9 +1,5 @@
-function listTemplate(pokemonList) {
-  let html = "";
-  for (let i = 0; i < pokemonList.length; i++) {
-    html += cardTemplate(pokemonList[i], i);
-  }
-  return `<ul class="card-list" aria-label="Pokemon list">${html}</ul>`;
+function getUlTemplate(cardsHtml) {
+  return `<ul class="card-list" aria-label="Pokemon list">${cardsHtml}</ul>`;
 }
 
 function notFoundTemplate() {
@@ -18,19 +14,15 @@ function cardTemplate(pokemon, index) {
         <span class="poke-number">#${pokemon.id}</span>
         <span class="card-name">${capitalize(pokemon.name)}</span>
         <span class="card-bottom-section">
-          <span class="type-wrapper">${typesTemplate(pokemon.types)}</span>
+          <span class="type-wrapper">${getTypesHtml(pokemon.types)}</span>
           <img class="card-image" id="card-image-${index}" data-id="card-image" src="${pokemon.image}" alt="${pokemon.name}" />
         </span>
       </button>
     </li>`;
 }
 
-function typesTemplate(types) {
-  let html = "";
-  for (let i = 0; i < types.length; i++) {
-    html += `<span class="poke-type">${capitalize(types[i])}</span>`;
-  }
-  return html;
+function typeTemplate(type) {
+  return `<span class="poke-type">${capitalize(type)}</span>`;
 }
 
 function iconTemplate(path) {
@@ -41,41 +33,39 @@ function iconTemplate(path) {
     </svg>`;
 }
 
-function dialogTemplate(pokemon, index) {
+function dialogTemplate(pokemon, prevOff, nextOff) {
   return `
     <div class="detail ${pokemon.types[0]}" id="overlay-pokemon-name" data-id="overlay-pokemon-name">
-      ${topTemplate(pokemon, index)}
+      ${topTemplate(pokemon, prevOff, nextOff)}
       ${tableTemplate(pokemon)}
     </div>`;
 }
 
-function topTemplate(pokemon, index) {
+function topTemplate(pokemon, prevOff, nextOff) {
   return `
     <div class="detail-top">
-      ${navTemplate(index)}
+      ${navTemplate(prevOff, nextOff)}
       <div class="detail-title">
         <h2 class="detail-name">${capitalize(pokemon.name)}</h2>
         <span class="detail-number">#${formatNumber(pokemon.id)}</span>
       </div>
-      <div class="type-wrapper detail-types">${typesTemplate(pokemon.types)}</div>
+      <div class="type-wrapper detail-types">${getTypesHtml(pokemon.types)}</div>
       <img class="detail-image" id="dialog-image" data-id="dialog-image" src="${pokemon.image}" alt="${pokemon.name}" />
     </div>`;
 }
 
-function navTemplate(index) {
+function navTemplate(prevOff, nextOff) {
   return `
     <div class="detail-nav">
       <button class="close-button" id="close-dialog-button" data-id="close-dialog-button"
         onclick="closeDialog()" aria-label="Close details">
         ${iconTemplate("M18 6L6 18M6 6l12 12")}
       </button>
-      ${arrowsTemplate(index)}
+      ${arrowsTemplate(prevOff, nextOff)}
     </div>`;
 }
 
-function arrowsTemplate(index) {
-  const prevOff = index === 0 ? "disabled" : "";
-  const nextOff = index === visiblePokemon.length - 1 ? "disabled" : "";
+function arrowsTemplate(prevOff, nextOff) {
   return `
     <div class="detail-arrows">
       ${prevButtonTemplate(prevOff)}
@@ -103,7 +93,7 @@ function tableTemplate(pokemon) {
   return `
     <div class="detail-panel">
       <table class="detail-table">
-        ${statRowsTemplate(pokemon.stats)}
+        ${getStatRowsHtml(pokemon.stats)}
         ${rowTemplate("Base Experience", pokemon.baseExp)}
         ${rowTemplate("Main Move", pokemon.mainMove)}
         ${rowTemplate("Height", pokemon.height)}
@@ -111,14 +101,6 @@ function tableTemplate(pokemon) {
         ${rowTemplate("Abilities", pokemon.abilities)}
       </table>
     </div>`;
-}
-
-function statRowsTemplate(stats) {
-  let html = "";
-  for (let i = 0; i < stats.length; i++) {
-    html += rowTemplate(stats[i].name, stats[i].value);
-  }
-  return html;
 }
 
 function rowTemplate(label, value) {

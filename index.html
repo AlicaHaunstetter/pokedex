@@ -13,12 +13,18 @@
     <script defer src="templates.js"></script>
     <script defer src="script.js"></script>
   </head>
-  <body>
+  <body onload="init()">
     <header>
       <section class="header-logo">
         <img src="./assets/img/pokedex.png" alt="Pokedex Logo Font" />
       </section>
-      <form class="search" onsubmit="startSearch(); return false;">
+      <form
+        class="search"
+        onsubmit="
+          startSearch();
+          return false;
+        "
+      >
         <input
           type="text"
           id="search-input"
@@ -50,7 +56,13 @@
     <main id="content" data-id="content"></main>
 
     <section class="load-more-section">
-      <div id="loading" class="loading-overlay" role="status" aria-label="Loading" hidden>
+      <div
+        id="loading"
+        class="loading-overlay"
+        role="status"
+        aria-label="Loading"
+        hidden
+      >
         <div class="spinner"></div>
         <span class="loading-text">Loading...</span>
       </div>

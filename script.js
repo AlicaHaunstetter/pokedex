@@ -6,6 +6,8 @@ let nextUrl = START_URL;
 let currentIndex = 0;
 let searchTerm = "";
 
+init();
+
 async function init() {
   await loadPokemon();
 }
@@ -145,7 +147,7 @@ function checkInput() {
 
 function filterPokemon() {
   return allPokemon.filter((pokemon) =>
-    pokemon.name.toLowerCase().includes(searchTerm)
+    pokemon.name.toLowerCase().includes(searchTerm),
   );
 }
 
@@ -162,13 +164,18 @@ function resetSearch() {
 }
 
 function renderCards() {
-  document.getElementById("load-more-button").hidden = searchTerm !== "" || !nextUrl;
+  document.getElementById("load-more-button").hidden =
+    searchTerm !== "" || !nextUrl;
   const content = document.getElementById("content");
   if (visiblePokemon.length === 0 && searchTerm !== "") {
     content.innerHTML = notFoundTemplate();
     return;
   }
-  content.innerHTML = listTemplate(visiblePokemon);
+  let cardsHtml = "";
+  for (let i = 0; i < visiblePokemon.length; i++) {
+    cardsHtml += cardTemplate(visiblePokemon[i], i);
+  }
+  content.innerHTML = getUlTemplate(cardsHtml);
 }
 
 function openDialog(index) {
@@ -180,7 +187,25 @@ function openDialog(index) {
 
 function renderDialog() {
   const dialog = document.getElementById("dialog");
-  dialog.innerHTML = dialogTemplate(visiblePokemon[currentIndex], currentIndex);
+  const prevOff = currentIndex === 0 ? "disabled" : "";
+  const nextOff = currentIndex === visiblePokemon.length - 1 ? "disabled" : "";
+  dialog.innerHTML = dialogTemplate(visiblePokemon[currentIndex], prevOff, nextOff);
+}
+
+function getTypesHtml(types) {
+  let html = "";
+  for (let i = 0; i < types.length; i++) {
+    html += typeTemplate(types[i]);
+  }
+  return html;
+}
+
+function getStatRowsHtml(stats) {
+  let html = "";
+  for (let i = 0; i < stats.length; i++) {
+    html += rowTemplate(stats[i].name, stats[i].value);
+  }
+  return html;
 }
 
 function closeDialog() {
@@ -206,5 +231,3 @@ function showNext() {
   currentIndex++;
   renderDialog();
 }
-
-init();
