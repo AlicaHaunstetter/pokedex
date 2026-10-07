@@ -104,6 +104,12 @@ main {
   transition: transform 0.2s;
 
   box-sizing: border-box;
+
+  @media (min-width: 911px) {
+    margin: 0.4rem;
+    width: 18rem;
+    height: 16rem;
+  }
 }
 
 .card:hover {
@@ -121,6 +127,10 @@ main {
   opacity: 0.1;
   background-size: 6.5rem;
   background-position: right -1.5rem bottom -1.5rem;
+
+  @media (min-width: 911px) {
+    background-size: 12rem;
+  }
 }
 
 .card-name {
@@ -129,6 +139,10 @@ main {
   font-weight: bold;
   margin-bottom: 0.25rem;
   filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.3));
+
+  @media (min-width: 911px) {
+    font-size: 2rem;
+  }
 }
 
 .card-bottom-section {
@@ -140,32 +154,48 @@ main {
 
 .card-bottom-section > img {
   position: absolute;
-  right: 0.5rem;
-  bottom: 0.25rem;
+  right: -0.5rem;
+  bottom: -0.25rem;
   width: 5rem;
   height: 4rem;
   object-fit: contain;
   z-index: 1;
+
+  @media (min-width: 911px) {
+    width: 12rem;
+    height: 10rem;
+    right: -0.5rem;
+    bottom: -0.25rem;
+  }
 }
 
 .poke-number {
   display: flex;
   justify-content: end;
   color: white;
-  font-size: 0.75rem;
+  font-size: 1rem;
   filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.3));
+
+  @media (min-width: 911px) {
+    font-size: 1.3rem;
+  }
 }
 
 .poke-type {
   display: block;
   color: white;
-  font-size: 0.75rem;
+  font-size: 1rem;
   background-color: rgba(255, 255, 255, 0.3);
   padding: 0.5rem;
   border-radius: 0.5rem;
   margin-block: 0.25rem;
   text-align: center;
   filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.3));
+
+  @media (min-width: 911px) {
+    font-size: 1.3rem;
+    margin-block: 0.5rem;
+  }
 }
 
 .bug {
@@ -237,7 +267,8 @@ dialog.overlay::backdrop {
   backdrop-filter: blur(3px);
 }
 
-@media (max-width: 480px) {
+/* auf marco's wunsch deaktiviert :) */
+/* @media (max-width: 350px) {
   dialog.overlay {
     width: 100%;
     max-width: 100%;
@@ -249,7 +280,7 @@ dialog.overlay::backdrop {
     height: 100%;
     border-radius: 0;
   }
-}
+} */
 
 .detail {
   position: relative;
@@ -340,7 +371,7 @@ dialog.overlay::backdrop {
 .detail-image {
   position: relative;
   z-index: 2;
-  align-self: center;
+  margin-left: auto;
   width: 13rem;
   height: 11rem;
   margin-top: 1rem;
@@ -364,7 +395,7 @@ dialog.overlay::backdrop {
 .detail-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.85rem;
+  font-size: 1rem;
 }
 
 .detail-table th,
@@ -436,4 +467,42 @@ dialog.overlay::backdrop {
 
 body.no-scroll {
   overflow: hidden;
+}
+
+.loading-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  background-color: rgba(0, 0, 54, 0.6);
+}
+
+.loading-overlay > * {
+  grid-area: 1 / 1;
+}
+
+.loading-text {
+  color: white;
+  font-family: sans-serif;
+  font-size: 0.9rem;
+}
+
+.loading-overlay[hidden] {
+  display: none;
+}
+
+.spinner {
+  width: 7rem;
+  height: 7rem;
+  border: 6px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }

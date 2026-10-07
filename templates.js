@@ -67,7 +67,7 @@ function navTemplate(index) {
     <div class="detail-nav">
       <button class="close-button" id="close-dialog-button" data-id="close-dialog-button"
         onclick="closeDialog()" aria-label="Close details">
-        ${iconTemplate("M19 12H5M11 6l-6 6 6 6")}
+        ${iconTemplate("M18 6L6 18M6 6l12 12")}
       </button>
       ${arrowsTemplate(index)}
     </div>`;

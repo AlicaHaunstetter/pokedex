@@ -18,7 +18,7 @@
       <section class="header-logo">
         <img src="./assets/img/pokedex.png" alt="Pokedex Logo Font" />
       </section>
-      <section class="search">
+      <form class="search" onsubmit="startSearch(); return false;">
         <input
           type="text"
           id="search-input"
@@ -31,12 +31,11 @@
           id="search-button"
           data-id="search-button"
           aria-label="Search Pokemon"
-          onclick="startSearch()"
           disabled
         >
           Search
         </button>
-      </section>
+      </form>
     </header>
 
     <dialog
@@ -51,7 +50,10 @@
     <main id="content" data-id="content"></main>
 
     <section class="load-more-section">
-      <p id="loading" hidden>Loading...</p>
+      <div id="loading" class="loading-overlay" role="status" aria-label="Loading" hidden>
+        <div class="spinner"></div>
+        <span class="loading-text">Loading...</span>
+      </div>
       <button
         id="load-more-button"
         data-id="load-more-button"

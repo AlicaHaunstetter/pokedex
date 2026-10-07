@@ -162,6 +162,7 @@ function resetSearch() {
 }
 
 function renderCards() {
+  document.getElementById("load-more-button").hidden = searchTerm !== "" || !nextUrl;
   const content = document.getElementById("content");
   if (visiblePokemon.length === 0 && searchTerm !== "") {
     content.innerHTML = notFoundTemplate();
